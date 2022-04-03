@@ -80,7 +80,7 @@ int eval(std::string pref) {
             restack.pop();
             first = restack.get();
             restack.pop();
-            restack.push(calc(pref[i],first,second));
+            restack.push(calc(pref[i], first, second));
         }
     }
     result = restack.get();
