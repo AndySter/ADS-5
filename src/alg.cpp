@@ -57,7 +57,32 @@ outp.pop_back();
 return outp;
 }
 
+int calc(char op, int first, int second) {
+    switch (op) {
+    case '+': return first + second;
+    case '-': return first - second;
+    case '*': return first * second;
+    case '/': return first / second;
+    default : return 0;
+    }
+}
+
 int eval(std::string pref) {
-  // добавьте код
-  return 0;
+    TStack <int, 100> restack;
+    int result = 0;
+    int first = 0;
+    int second = 0;
+    for (int i = 0; i < pref.length(); i++) {
+        if (prioritet(pref[i]) == -1)
+            restack.push(pref[i] - '0');
+        if (prioritet(pref[i]) > 1) {
+            second = restack.get();
+            restack.pop();
+            first = restack.get();
+            restack.pop();
+            restack.push(calc(pref[i],first,second));
+        }
+    }
+    result = restack.get();
+    return result;
 }
