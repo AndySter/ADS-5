@@ -3,11 +3,11 @@
 #include <map>
 #include "tstack.h"
 
-int prioritet (char nam) {
+int prioritet(char nam) {
     switch (nam) {
     case '(': return 0;
-    case ')': return 1; 
-    case '+': case '-': return 2; 
+    case ')': return 1;
+    case '+': case '-': return 2;
     case '*': case '/': return 3;
     default : return -1;
     }
@@ -25,13 +25,13 @@ std::string infx2pstfx(std::string inf) {
             }
             outp += ' ';
         } else {
-            if (prioritet(inf[i]) == 0)
+            if (prioritet(inf[i]) == 0) {
               stack.push(inf[i]);
-            else if (prioritet(inf[i]) > prioritet(stack.get()))
+            } else if (prioritet(inf[i]) > prioritet(stack.get())) {
               stack.push(inf[i]);
-            else if (stack.isEmpty())
+            } else if (stack.isEmpty()) {
               stack.push(inf[i]);
-            else if (prioritet(inf[i]) == 1) {
+            } else if (prioritet(inf[i]) == 1) {
               while (prioritet(stack.get()) != 0) {
                 outp += stack.get();
                 outp += ' ';
@@ -46,7 +46,7 @@ std::string infx2pstfx(std::string inf) {
             }
             stack.push(inf[i]);
         }
-    }    
+    } 
 }
 while (!stack.isEmpty()) {
     outp += stack.get();
