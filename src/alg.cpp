@@ -46,7 +46,7 @@ std::string infx2pstfx(std::string inf) {
             }
             stack.push(inf[i]);
         }
-    } 
+    }
 }
 while (!stack.isEmpty()) {
     outp += stack.get();
